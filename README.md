@@ -1,0 +1,73 @@
+<a href="https://chromewebstore.google.com/detail/meowcad-solver/ngkonaonfgfbnobbacojipgndihanmca"><img alt="Chrome Extension" width="218px" src="assets/chrome-extension-logo.png"/></a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/meowcad-solver/"><img alt="Firefox Addons" width="218px" src="assets/firefox-addon-logo.svg"/></a>
+
+# NetAcad Solver
+
+Browser extension allowing you to pass all the NetAcad quizzes
+
+<img alt="My generous offer" width="300" src="assets/screenshots/my-offer.jpg"/>
+
+## Installation
+
+### Automatic Installation:
+
+1. Install the extension
+   from [Chrome Web Store](https://chromewebstore.google.com/detail/meowcad-solver/ngkonaonfgfbnobbacojipgndihanmca)
+   or [Firefox Addons](https://addons.mozilla.org/en-US/firefox/addon/meowcad-solver/)
+
+### Manual installation
+
+<details>
+  <summary>For Chromium users: (click)</summary>
+
+1. Go to [the latest release](https://github.com/ingui-n/musescore-downloader/releases/latest)
+2. Download the `netacad-solver-0.x.x-manifest-v3.crx` file
+3. Go to the browser extension manager [chrome://extensions/](chrome://extensions/)
+4. Enable `Developer mode` (at the top right)
+5. Drag and drop the file downloaded in the previous step into the browser window and click to install
+6. That's it! Extension is now ready to use 🎉
+
+</details>
+
+<details>
+  <summary>For Firefox users: (click)</summary>
+
+1. Go to [the latest release](https://github.com/ingui-n/musescore-downloader/releases/latest)
+2. Click to the `netacad-solver-0.x.x-manifest-v2.xpi` file
+3. A bubble with text and button should appear. Click on `Continue to Installation` and `Add`
+4. That's it! Extension is now ready to use 🎉
+
+</details>
+
+## Usage
+
+1. Open your course at [Netacad.com](https://netacad.com/)
+2. Use one of following options:
+- Click on quiz question and the right option(s) should be selected automatically
+- Hover over the answers while holding the `Ctrl` button and the right option(s) should select automatically
+- Videos are auto-skipped when detected on lesson pages
+- Use the "Skip Lecture" button for one-click video completion
+- Use the extension popup to toggle auto-skip video and show/hide the "Skip Lecture" button
+
+![demo.gif](assets/videos/demo.gif)
+![demo-hover.gif](assets/videos/demo-hover.gif)
+
+## Supported browsers
+
+* Firefox
+* Chrome
+* Opera
+* Brave
+* Vivaldi
+* (basically all Chromium browsers)
+
+## Ideas to improve
+
+- Settings popup to toggle auto-select/hover mode, add delay, and enable/disable watermark
+- MutationObserver-based detection to reduce polling and CPU usage
+- Visual feedback (toast/highlight) when an answer is auto-selected
+- Per-question-type controls (basic/match/dropdown/yes-no)
+- Keyboard shortcuts for manual trigger and pause/resume
+- Debug mode that logs selector mismatches when NetAcad changes markup
+- Safe mode to avoid changing already submitted answers
+# cisco
