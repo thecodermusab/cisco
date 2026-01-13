@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>maahir</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="panel">
+      <section class="hero">
+        <div class="hero-glow hero-glow-one"></div>
+        <div class="hero-glow hero-glow-two"></div>
+        <div class="hero-content">
+          <div class="hero-icons">
+            <div class="glass-card flag-card">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" class="flag" preserveAspectRatio="none">
+                <rect width="900" height="600" fill="#4189DD"></rect>
+                <polygon fill="#FFFFFF" points="450,180 523,405 331,265 569,265 377,405"></polygon>
+              </svg>
+              <div class="flag-overlay"></div>
+            </div>
+            <div class="glass-card logo-card">
+              <div class="logo-circle">
+                <img src="LogoInvoice.png" alt="Maahir logo" class="logo-image">
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-text">
+            <h1>One Somalia</h1>
+            <p>Maahir Helper</p>
+          </div>
+
+          <div class="notice">
+            <div class="notice-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="notice-text">
+              <span>System Notice</span>
+              <strong>Somaliland is not a country.</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="auth-card view is-active" data-view="login">
+        <h3>Sign in</h3>
+        <form id="loginForm" class="auth-form">
+          <label class="field">
+            <span>Username</span>
+            <input type="text" id="loginUsername" placeholder="maahir" required>
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input type="password" id="loginPassword" placeholder="maahir123" required>
+          </label>
+          <div class="auth-error" id="loginError"></div>
+          <button class="action" type="submit">Unlock</button>
+          <div class="auth-hint">Default: maahir / maahir123 • Preview: somaliland-waa-gobol / somaliland-waa-gobol</div>
+        </form>
+      </section>
+
+      <div class="view" data-view="app">
+        <div class="app-full">
+          <section class="settings-card">
+          <h3>Answer Assist</h3>
+          <div class="toggle-row" data-toggle="autoSelectAnswers">
+            <div class="toggle-text">
+              <span class="title">Auto-select answers</span>
+            <span class="sub">Pick correct options automatically</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="autoSelectAnswers">
+            <span class="track"></span>
+          </label>
+        </div>
+        <div class="divider"></div>
+        <div class="toggle-row" data-toggle="previewOnly">
+          <div class="toggle-text">
+            <span class="title">Preview only</span>
+            <span class="sub">Highlight without clicking</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="previewOnly">
+            <span class="track"></span>
+          </label>
+          </div>
+          </section>
+
+          <section class="settings-card">
+          <h3>Lecture Skip</h3>
+          <div class="toggle-row" data-toggle="autoSkipVideo">
+            <div class="toggle-text">
+              <span class="title">Auto-skip videos</span>
+            <span class="sub">Jump to the end</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="autoSkipVideo">
+            <span class="track"></span>
+          </label>
+        </div>
+        <div class="divider"></div>
+        <div class="toggle-row" data-toggle="autoAdvanceLesson">
+          <div class="toggle-text">
+            <span class="title">Smart auto-advance</span>
+            <span class="sub">Only click next after completion</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="autoAdvanceLesson">
+            <span class="track"></span>
+          </label>
+        </div>
+        <div class="divider"></div>
+        <div class="toggle-row" data-toggle="showSkipLectureButton">
+          <div class="toggle-text">
+            <span class="title">Enable Skip Lecture button</span>
+            <span class="sub">Show floating action on page</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="showSkipLectureButton">
+            <span class="track"></span>
+          </label>
+        </div>
+        <button class="action" id="skipLectureNow" type="button">
+          Skip Lecture Now
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+          </button>
+          </section>
+
+          <section class="settings-card">
+          <h3>Status</h3>
+          <div class="toggle-row" data-toggle="showStatusPanel">
+            <div class="toggle-text">
+              <span class="title">Show status panel</span>
+            <span class="sub">Answers, video, next state</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="showStatusPanel">
+            <span class="track"></span>
+          </label>
+        </div>
+        <div class="divider"></div>
+        <div class="toggle-row" data-toggle="debugMode">
+          <div class="toggle-text">
+            <span class="title">Debug mode</span>
+            <span class="sub">Log selector issues</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="debugMode">
+            <span class="track"></span>
+          </label>
+        </div>
+        <div class="divider"></div>
+        <div class="toggle-row" data-toggle="paused">
+          <div class="toggle-text">
+            <span class="title">Pause extension</span>
+            <span class="sub">Hotkey: Alt+Shift+P</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="paused">
+            <span class="track"></span>
+            </label>
+          </div>
+          </section>
+
+          <footer class="footer">
+            <span>v1.0.0</span>
+            <span class="dot"></span>
+            <span>Powered by Maahir</span>
+            <button class="logout" id="logout" type="button">Sign out</button>
+          </footer>
+        </div>
+
+        <div class="app-preview">
+          <section class="settings-card">
+            <h3>Preview Only</h3>
+            <div class="toggle-row" data-toggle="previewOnlyLimited">
+              <div class="toggle-text">
+                <span class="title">Preview only</span>
+                <span class="sub">Highlight without clicking</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="previewOnlyLimited">
+                <span class="track"></span>
+              </label>
+            </div>
+          </section>
+
+          <footer class="footer">
+            <span>v1.0.0</span>
+            <span class="dot"></span>
+            <span>Powered by Maahir</span>
+            <button class="logout" id="logoutLimited" type="button">Sign out</button>
+          </footer>
+        </div>
+      </div>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

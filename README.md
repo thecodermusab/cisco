@@ -48,6 +48,7 @@ Browser extension allowing you to pass all the NetAcad quizzes
 - Videos are auto-skipped when detected on lesson pages
 - Use the "Skip Lecture" button for one-click video completion
 - Use the extension popup to toggle auto-skip video and show/hide the "Skip Lecture" button
+- Use the popup to toggle auto-select, preview-only mode, status panel, and debug logging
 
 ![demo.gif](assets/videos/demo.gif)
 ![demo-hover.gif](assets/videos/demo-hover.gif)
@@ -63,11 +64,10 @@ Browser extension allowing you to pass all the NetAcad quizzes
 
 ## Ideas to improve
 
-- Settings popup to toggle auto-select/hover mode, add delay, and enable/disable watermark
+- Per-course selector profiles editable in the popup
 - MutationObserver-based detection to reduce polling and CPU usage
-- Visual feedback (toast/highlight) when an answer is auto-selected
-- Per-question-type controls (basic/match/dropdown/yes-no)
-- Keyboard shortcuts for manual trigger and pause/resume
-- Debug mode that logs selector mismatches when NetAcad changes markup
-- Safe mode to avoid changing already submitted answers
+- Status panel customization (position, compact mode)
+- Export/import settings for easy sharing
+- Multi-language popup labels
+- Per-question-type toggles for advanced control
 # cisco
