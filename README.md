@@ -1,11 +1,6 @@
-<a href="https://chromewebstore.google.com/detail/meowcad-solver/ngkonaonfgfbnobbacojipgndihanmca"><img alt="Chrome Extension" width="218" src="assets/chrome-extension-logo.png"/></a>
-<a href="https://addons.mozilla.org/en-US/firefox/addon/meowcad-solver/"><img alt="Firefox Addons" width="218" src="assets/firefox-addon-logo.svg"/></a>
-
 # NetAcad Solver
 
 I built this browser extension to make NetAcad quizzes and lessons fast and painless.
-
-<img alt="My generous offer" width="300" src="assets/screenshots/my-offer.jpg"/>
 
 ## What it does
 
@@ -50,8 +45,6 @@ I built this browser extension to make NetAcad quizzes and lessons fast and pain
 2. Click a question or use Ctrl + hover on answers
 3. Use the popup to toggle features
 
-![demo.gif](assets/videos/demo.gif)
-![demo-hover.gif](assets/videos/demo-hover.gif)
 
 ## Development
 
