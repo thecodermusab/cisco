@@ -51,15 +51,17 @@
         <form id="loginForm" class="auth-form">
           <label class="field">
             <span>Username</span>
-            <input type="text" id="loginUsername" placeholder="maahir" required>
+            <input type="text" id="loginUsername" list="loginUsernames" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Username" required>
           </label>
+          <datalist id="loginUsernames"></datalist>
+          <div class="auth-suggest" id="loginSuggest"></div>
           <label class="field">
             <span>Password</span>
-            <input type="password" id="loginPassword" placeholder="maahir123" required>
+            <input type="password" id="loginPassword" autocomplete="current-password" placeholder="Password" required>
           </label>
           <div class="auth-error" id="loginError"></div>
           <button class="action" type="submit">Unlock</button>
-          <div class="auth-hint">Default: maahir / maahir123 • Preview: somaliland-waa-gobol / somaliland-waa-gobol</div>
+          <div class="auth-hint">Use your provided login.</div>
         </form>
       </section>
 

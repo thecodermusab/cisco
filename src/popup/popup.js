@@ -41,12 +41,60 @@ const loginForm = document.getElementById('loginForm');
 const loginUsernameEl = document.getElementById('loginUsername');
 const loginPasswordEl = document.getElementById('loginPassword');
 const loginErrorEl = document.getElementById('loginError');
+const loginSuggestEl = document.getElementById('loginSuggest');
+const loginUsernamesEl = document.getElementById('loginUsernames');
 const logoutEl = document.getElementById('logout');
 const logoutLimitedEl = document.getElementById('logoutLimited');
 const appFullEl = document.querySelector('.app-full');
 const appPreviewEl = document.querySelector('.app-preview');
 const previewOnlyLimitedEl = document.getElementById('previewOnlyLimited');
 let currentRole = 'none';
+
+const buildUsernameOptions = () => {
+  if (!loginUsernamesEl)
+    return;
+  loginUsernamesEl.textContent = '';
+  accounts.forEach(account => {
+    const option = document.createElement('option');
+    option.value = account.username;
+    loginUsernamesEl.appendChild(option);
+  });
+};
+
+const getUsernameSuggestion = value => {
+  const normalized = value.trim().toLowerCase();
+  if (!normalized)
+    return null;
+  const match = accounts.find(account => account.username.toLowerCase().startsWith(normalized));
+  if (!match)
+    return null;
+  if (match.username.toLowerCase() === normalized)
+    return null;
+  return match.username;
+};
+
+const updateUsernameSuggestion = () => {
+  if (!loginSuggestEl || !loginUsernameEl)
+    return;
+  const suggestion = getUsernameSuggestion(loginUsernameEl.value || '');
+  if (suggestion) {
+    loginSuggestEl.textContent = `Suggestion: ${suggestion} (Tab to complete)`;
+  } else {
+    loginSuggestEl.textContent = '';
+  }
+};
+
+const applyUsernameSuggestion = () => {
+  if (!loginUsernameEl)
+    return false;
+  const suggestion = getUsernameSuggestion(loginUsernameEl.value || '');
+  if (!suggestion)
+    return false;
+  loginUsernameEl.value = suggestion;
+  updateUsernameSuggestion();
+  loginUsernameEl.setSelectionRange(suggestion.length, suggestion.length);
+  return true;
+};
 
 const loadSettings = async () => {
   try {
@@ -156,6 +204,7 @@ const loadAuth = async () => {
   setRoleView(isValid ? auth.role : 'none');
   if (loginUsernameEl) {
     loginUsernameEl.value = auth.username || accounts[0].username;
+    updateUsernameSuggestion();
   }
 };
 
@@ -212,6 +261,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
   init();
+
+  buildUsernameOptions();
+  if (loginUsernameEl) {
+    loginUsernameEl.addEventListener('input', updateUsernameSuggestion);
+    loginUsernameEl.addEventListener('keydown', event => {
+      if (event.key === 'Tab' && !event.shiftKey) {
+        if (applyUsernameSuggestion()) {
+          event.preventDefault();
+        }
+      }
+    });
+  }
 
   autoSelectAnswersEl.addEventListener('change', saveSettings);
   previewOnlyEl.addEventListener('change', saveSettings);

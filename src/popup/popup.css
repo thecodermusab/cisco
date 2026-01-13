@@ -297,6 +297,13 @@ body {
   text-align: center;
 }
 
+.auth-suggest {
+  font-size: 10px;
+  color: var(--muted);
+  min-height: 12px;
+  padding-left: 2px;
+}
+
 .auth-error {
   font-size: 11px;
   color: #ef4444;
