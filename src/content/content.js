@@ -58,6 +58,19 @@ const skipButtonId = 'netacad-solver-skip-button';
 let skipLectureClickTimer = null;
 let advanceTimer = null;
 let advanceAttempts = 0;
+const FAST_SCAN_INTERVAL_MS = 150;
+const QUESTION_SECTION_RETRY_MS = 150;
+const QUICK_ACTION_LABELS = [
+  'start',
+  'begin',
+  'submit',
+  'next',
+  'continue',
+  'check',
+  'finish',
+  'attempt',
+  'resume'
+];
 
 const courseProfiles = [
   {
@@ -805,6 +818,29 @@ const isEditableTarget = target => {
   return target.isContentEditable || tag === 'input' || tag === 'textarea' || tag === 'select';
 };
 
+const getActionLabel = element => {
+  if (!element)
+    return '';
+  const text = element.textContent || '';
+  const aria = element.getAttribute?.('aria-label') || '';
+  const title = element.getAttribute?.('title') || '';
+  const value = element.value || '';
+  return `${text} ${aria} ${title} ${value}`.trim().toLowerCase();
+};
+
+const isQuickActionButton = element => {
+  if (!element)
+    return false;
+  if (element.disabled || element.getAttribute?.('aria-disabled') === 'true')
+    return false;
+  if (!isElementVisible(element))
+    return false;
+  const label = getActionLabel(element);
+  if (!label)
+    return false;
+  return QUICK_ACTION_LABELS.some(action => label.includes(action));
+};
+
 const finishVideo = (video, force = false) => {
   if (!video)
     return;
@@ -1246,7 +1282,7 @@ const setQuestionSections = async () => {
   }
 
   if (!isAtLeaseOneSet) {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, QUESTION_SECTION_RETRY_MS));
     return await setQuestionSections();
   }
 };
@@ -1776,21 +1812,26 @@ const main = async () => {
   }
 };
 
-const suspendMain = () => {
-  if (isSuspendRunning) return;
+const suspendMain = (checkInterval = 1000) => {
+  if (isSuspendRunning)
+    return;
 
   isSuspendRunning = true;
 
+  let interval = null;
   const checking = async () => {
     if (setIsReady()) {
-      clearInterval(interval);
-      main().finally(() => {
+      if (interval) {
+        clearInterval(interval);
+      }
+      await main().finally(() => {
         isSuspendRunning = false;
       });
     }
   };
 
-  const interval = setInterval(checking, 1000);
+  interval = setInterval(checking, checkInterval);
+  checking();
 };
 
 if (window) {
@@ -1841,6 +1882,20 @@ if (window) {
       togglePause();
     }
   });
+
+  document.addEventListener('click', e => {
+    const target = e.target;
+    const button = target?.closest?.('button, [role="button"], a, input[type="submit"], input[type="button"]');
+    if (!button)
+      return;
+    if (isQuickActionButton(button)) {
+      suspendMain(FAST_SCAN_INTERVAL_MS);
+    }
+  }, true);
+
+  document.addEventListener('submit', () => {
+    suspendMain(FAST_SCAN_INTERVAL_MS);
+  }, true);
 
   setInterval(() => {
     if (isSuspendRunning || components.length === 0)
