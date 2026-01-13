@@ -1,28 +1,28 @@
 # NetAcad Solver
 
-I built this browser extension to make NetAcad quizzes and lessons fast and painless.
+NetAcad Solver is a browser extension that helps you move faster in NetAcad lessons and quizzes.
 
 ## What it does
 
-- Auto-selects the right answers on quiz questions
-- Hover + Ctrl to auto-select answers without clicking
-- Auto-skips lesson videos when detected
-- One-click "Skip Lecture" button
-- Popup toggles for auto-select, preview-only mode, status panel, and debug logs
+- Picks the correct answers in quizzes
+- Shows answers when you hover + Ctrl
+- Skips lesson videos automatically
+- Adds a "Skip Lecture" button
+- Lets you turn features on or off in the popup
 
 ## Install
 
 ### Store install
 
-- Chrome Web Store: https://chromewebstore.google.com/detail/meowcad-solver/ngkonaonfgfbnobbacojipgndihanmca
-- Firefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/meowcad-solver/
+- Chrome Web Store (search for "NetAcad Solver")
+- Firefox Add-ons (search for "NetAcad Solver")
 
 ### Manual install
 
 <details>
   <summary>Chromium (click)</summary>
 
-1. Go to the latest release: https://github.com/thecodermusab/cisco/releases/latest
+1. Open the latest release for this repo
 2. Download `netacad-solver-0.x.x-manifest-v3.crx`
 3. Open chrome://extensions/
 4. Enable "Developer mode"
@@ -33,18 +33,19 @@ I built this browser extension to make NetAcad quizzes and lessons fast and pain
 <details>
   <summary>Firefox (click)</summary>
 
-1. Go to the latest release: https://github.com/thecodermusab/cisco/releases/latest
+1. Open the latest release for this repo
 2. Download `netacad-solver-0.x.x-manifest-v2.xpi`
 3. Open the file in Firefox and confirm the install
 
 </details>
 
-## Usage
+## How to use
 
-1. Open your course at https://netacad.com/
-2. Click a question or use Ctrl + hover on answers
-3. Use the popup to toggle features
-
+1. Open your course on NetAcad.
+2. Start a quiz or lesson.
+3. Click a question to auto-select the right answer.
+4. Or hold Ctrl and hover to preview.
+5. Use the popup to turn features on or off.
 
 ## Development
 
